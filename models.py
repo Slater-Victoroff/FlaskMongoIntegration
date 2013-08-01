@@ -4,11 +4,12 @@ from MongoIntegration import db
 class Image(db.Document):
     created_at = db.DateTimeField(default=datetime.datetime.now, required=True)
     title = db.StringField(max_length=255, required=False)
-    url = db.StringField(required=True)
+    slug = db.StringField(max_length=255, required=True)
     metadata = db.ListField(db.EmbeddedDocumentField('ClothingFeature'))
+    source = db.StringField(max_length=255, required=True)
 
     def __unicode__(self):
-        return self.url + "<" + self.title + ">"
+        return self.slug + "<" + self.title + ">"
 
     meta = {
         'allow_inheritance': True,

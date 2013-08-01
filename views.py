@@ -13,10 +13,10 @@ class ClothingView(MethodView):
 
 class ClothingUpdate(MethodView):
     
-    def get(self, url):
-        clothing_piece = Image.objects.get_or_404(url=url)
+    def get(self, slug):
+        clothing_piece = Image.objects.get_or_404(slug=slug)
         return render_template('clothing/update.html', clothing=clothing_piece)
 
 clothes.add_url_rule("/", view_func=ClothingView.as_view('list'))
-clothes.add_url_rule("/<url>/", view_func=ClothingUpdate.as_view('update'))
+clothes.add_url_rule("/<slug>/", view_func=ClothingUpdate.as_view('update'))
         

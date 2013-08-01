@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% for cloth in clothes %}
+      <h2>
+        <img src={{ cloth.source }}<a href="{{ url_for('clothes.detail', slug=cloth.slug) }}">{{ cloth.title }}</a></img>
+      </h2>
+    {% endfor %}
+{% endblock %}
